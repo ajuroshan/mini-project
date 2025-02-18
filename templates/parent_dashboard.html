@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1b1b1b;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #1a1a1a;
+            color: #77aaff;
+            padding: 10px 0;
+            border-bottom: #333 3px solid;
+        }
+        header a {
+            color: #77aaff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+        header li {
+            margin: 0 20px;
+        }
+        header #branding {
+            flex-grow: 1;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        section {
+            padding: 20px;
+            margin: 20px 0;
+            background: #333;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .section-title {
+            margin-bottom: 20px;
+            color: #77aaff;
+        }
+        .section-content {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #555;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Parent Dashboard</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'parent_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="parent-info">
+            <h2 class="section-title">Parent Information</h2>
+            <div class="section-content">
+                <p><strong>Username:</strong> {{ parent.user.username }}</p>
+                <p><strong>Email:</strong> {{ parent.user.email }}</p>
+            </div>
+        </section>
+
+        <section id="children-list">
+            <h2 class="section-title">Your Children</h2>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for child in parent.children.all %}
+                        <tr>
+                            <td>{{ child.user.username }}</td>
+                            <td>{{ child.user.email }}</td>
+                            <td>{{ child.user.email }}</td>
+                            <td><a href="{% url 'child_detail' child.id %}">View Details</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="attendance">
+            <h2 class="section-title">Children's Attendance</h2>
+            <div class="section-content">
+                <p>Attendance details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="cafeteria-spends">
+            <h2 class="section-title">Cafeteria Spends</h2>
+            <div class="section-content">
+                <p>Cafeteria spends details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="travel-allowance">
+            <h2 class="section-title">Travel Allowance</h2>
+            <div class="section-content">
+                <p>Travel allowance details will be displayed here.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

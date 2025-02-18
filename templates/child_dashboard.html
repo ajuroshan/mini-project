@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b1b1b;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #1a1a1a;
+            color: #77aaff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #333 3px solid;
+        }
+        header a {
+            color: #77aaff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        section {
+            padding: 20px;
+            margin: 20px 0;
+            background: #333;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .section-title {
+            margin-bottom: 20px;
+            color: #77aaff;
+        }
+        .section-content {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Child Dashboard</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'child_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="attendance">
+            <h2 class="section-title">Attendance</h2>
+            <div class="section-content">
+                <!-- Attendance details go here -->
+                <p>Attendance details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="cafeteria-spends">
+            <h2 class="section-title">Cafeteria Spends</h2>
+            <div class="section-content">
+                <!-- Cafeteria spends details go here -->
+                <p>Cafeteria spends details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="travel-allowance">
+            <h2 class="section-title">Travel Allowance</h2>
+            <div class="section-content">
+                <!-- Travel allowance details go here -->
+                <p>Travel allowance details will be displayed here.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
