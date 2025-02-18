@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        header {
+            background: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            margin-top: 20px;
+            text-align: right;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+        nav li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav a {
+            color: #343a40;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        section {
+            margin: 20px 0;
+        }
+        .section-title {
+            color: #007bff;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .section-content {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .navigation-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .navigation-buttons a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .navigation-buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Child Details</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{% url 'parent_dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+
+        <section id="child-info">
+            <h2 class="section-title">Child Information</h2>
+            <div class="section-content">
+                <p><strong>Username:</strong> {{ child.user.username }}</p>
+                <p><strong>Email:</strong> {{ child.user.email }}</p>
+                <!-- Add more child-specific details here -->
+            </div>
+        </section>
+
+        <section id="attendance">
+            <h2 class="section-title">Attendance</h2>
+            <div class="section-content">
+                <p>Attendance details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="cafeteria-spends">
+            <h2 class="section-title">Cafeteria Spends</h2>
+            <div class="section-content">
+                <p>Cafeteria spends details will be displayed here.</p>
+            </div>
+        </section>
+
+        <section id="travel-allowance">
+            <h2 class="section-title">Travel Allowance</h2>
+            <div class="section-content">
+                <p>Travel allowance details will be displayed here.</p>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()">Go Back</a>
+            <a href="{% url 'parent_dashboard' %}">Return to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
