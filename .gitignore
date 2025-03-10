@@ -1,5 +1,5 @@
 # django default .gitignore
-venv
+.venv
 .env
 .idea
 *.pyc
