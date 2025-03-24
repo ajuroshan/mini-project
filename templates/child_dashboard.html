@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Child Dashboard - Student-Parent Portal{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Child Dashboard</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">My Spends</h5>
+            <p class="card-text">${{ child_account.balance }}</p>
+        </div>
+    </div>
+
+    <h2 class="mb-3">Available Services</h2>
+    <div class="row">
+        {% for service in services %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.name }}</h5>
+                        <p class="card-text">Cost: ${{ service.cost }}</p>
+                        <a href="{% url 'avail_service' service.id %}" class="btn btn-primary">Avail Service</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

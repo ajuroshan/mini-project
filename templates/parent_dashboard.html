@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Parent Dashboard - Student-Parent Portal{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Parent Dashboard</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Account Balance</h5>
+            <p class="card-text">${{ parent_account.balance }}</p>
+        </div>
+    </div>
+
+    <h2 class="mb-3">Your Children</h2>
+    <div class="row">
+        {% for child in children %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ child.user.username }}</h5>
+                        <p class="card-text">Balance: ${{ child.accounts.first.balance }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
