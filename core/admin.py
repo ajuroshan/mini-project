@@ -60,18 +60,18 @@ admin.site.index_title = "Welcome to the Student-Parent Administration Portal"
 
 
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from .models import Transaction, ParentAccount, ChildAccount
-
-@receiver(post_save, sender=Transaction)
-def update_accounts(sender, instance, **kwargs):
-    # Deduct the amount from the parent's account
-    parent_account = ParentAccount.objects.get(parent=instance.parent)
-    parent_account.balance -= instance.amount
-    parent_account.save()
-
-    # Add the amount to the child's account
-    child_account = ChildAccount.objects.get(child=instance.child)
-    child_account.balance += instance.amount
-    child_account.save()
+# from django.db.models.signals import post_save
+# from django.dispatch import receiver
+# from .models import Transaction, ParentAccount, ChildAccount
+#
+# @receiver(post_save, sender=Transaction)
+# def update_accounts(sender, instance, **kwargs):
+#     # Deduct the amount from the parent's account
+#     parent_account = ParentAccount.objects.get(parent=instance.parent)
+#     parent_account.balance -= instance.amount
+#     parent_account.save()
+#
+#     # Add the amount to the child's account
+#     child_account = ChildAccount.objects.get(child=instance.child)
+#     child_account.balance += instance.amount
+#     child_account.save()
