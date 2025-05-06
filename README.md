@@ -1,4 +1,2 @@
 # mini project
 
-
-heasohfs
